@@ -19,15 +19,27 @@ def max_subarray_sum(nums: list[int]) -> int:
     Returns:
         int: The maximum sum of any contiguous subarray.
     """
-
-    max_current = max_global = nums[0]
+    res = nums[0]
+    total = 0
     
-    for num in nums:
-        max_current = max(num, max_current + num)
-        if max_current < max_global:
-            max_global = max_current
+    for n in nums:
+        if total < 0:
+            total = 0
             
-    return max_global
+        total += n
+        res = max(res, total)
+        
+    return res
+
+
+    # max_current = max_global = nums[0]
+    
+    # for num in nums:
+    #     max_current = max(num, max_current + num)
+    #     if max_current < max_global:
+    #         max_global = max_current
+            
+    # return max_global
 
 # Example usage:
 def main():
